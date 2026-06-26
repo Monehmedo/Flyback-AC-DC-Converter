@@ -5,33 +5,58 @@ topology, converting 230VAC mains input to a regulated 12V DC output. This proje
 covers full schematic design, PCB layout, and 3D validation.
 
 ⚡Specifications
+
 Parameter Value
+
 Input Voltage 230VAC (50Hz)
 Output Voltage 12V DC
+
 Topology Flyback (Isolated SMPS)
+
 PWM Controller VIPer22A (DIP-8)
+
 Transformer EE25-13-7
+
 Rectifier Bridge KBP206
+
 Output Diode SB360 (Schottky)
+
 Feedback / Isolation EL817 Optocoupler + TL431
+
 Input Protection Varistor + NTC Thermistor + Fuse (500mA)
+
 EMI Filter Schaffner RN102-0.3-02-12M
 
 🔧Circuit Architecture
+
 The design is divided into four functional blocks:
+
 1.🔌Input Filter ( Eingangsfilter )
+
 Varistor (RV1): Overvoltage/surge protection
+
 NTC Thermistor (TH1): Inrush current limiting at startup
+
 EMI Filter (FL1 - Schaffner RN102): Common-mode noise suppression
+
 Fuse (F1 - 500mA): Short-circuit protection
+
 X-Capacitor (C1 - 100nF/275VAC): Differential-mode noise filtering
+
 2.⚙️Power Stage ( Leistungsstufe )
+
 Bridge Rectifier (D15 - KBP206): Full-wave AC-to-DC conversion
+
 Bulk Capacitor (C2 - 22µF/400V): DC bus smoothing
+
 VIPer22A PWM Controller (U1): Integrated MOSFET + PWM control IC
+
 Fast Recovery Diode (D1 - FR107): Demagnetization protection
+
 Flyback Transformer (T1 - EE25-13-7): Galvanic isolation & energy transfer
+
 RCD Snubber (R3, C3, D1): MOSFET drain spike clamping
+
 3.🔋DC Output ( DC Ausgang )
 Schottky Diode (D5 - SB360): Low forward-drop rectification
 Output Inductance (L1 - 10µH): Output ripple reduction
